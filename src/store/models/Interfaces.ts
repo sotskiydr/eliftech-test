@@ -34,7 +34,8 @@ export interface ICart {
 }
 
 export interface ICartChange {
-    amount: number;
+    num: number;
+    currentAmount: number;
     action: string;
     product: IProducts
 }
@@ -55,6 +56,15 @@ export interface IForm {
 }
 
 export interface IMakeCartOrder {
+    name: string;
+    email: string;
+    address: string;
+    phone: string;
+    cart: ICart;
+}
+
+export interface IGetCartOrder {
+    _id: string;
     name: string;
     email: string;
     address: string;

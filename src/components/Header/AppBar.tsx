@@ -17,7 +17,6 @@ import {NavLink} from "react-router-dom";
 export default function MenuAppBar() {
     const dispatch = useAppDispatch();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const { isCurrentUser } = useAppSelector(state => state.AuthSlice);
     const { token } = useAppSelector(state => state.AuthSlice);
     const [logout] = useLogoutMutation()
 
@@ -49,11 +48,14 @@ export default function MenuAppBar() {
                       <MenuIcon />
                   </IconButton>
                   <Box sx={{ flexGrow: 1, display: 'flex' }}>
-                      <Typography variant="h5" component="h2" sx={{ mr: '20px' }} >
+                      <Typography variant="h5" component="h2" sx={{ mr: '30px' }} >
                           <NavLink to="/shop">Shop</NavLink>
                       </Typography>
-                      <Typography variant="h5" component="h2">
+                      <Typography variant="h5" component="h2" sx={{ mr: '30px' }}>
                           <NavLink to="/cart">Shopping Cart</NavLink>
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                          <NavLink to="/history">History orders</NavLink>
                       </Typography>
                   </Box>
                   {token && <CurrentUser />}

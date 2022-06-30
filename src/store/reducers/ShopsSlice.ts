@@ -57,9 +57,9 @@ export const shopsSlice = createSlice({
                         ...action.payload.product,
                         amount:
                           action.payload.action === 'add' ?
-                            Number(action.payload.amount) + 1
+                            Number(action.payload.currentAmount) + 1
                             :
-                            Number(action.payload.amount) - 1
+                            Number(action.payload.currentAmount) - 1
                     }
                 }
             })

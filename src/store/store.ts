@@ -19,12 +19,20 @@ const authPersistConfig = {
     whitelist: ['token'],
 };
 
+const shopsPersistConfig = {
+    key: 'cart currentShop renderProducts',
+    storage,
+    whitelist: ['cart', 'currentShop', 'renderProducts'],
+};
+
 const persistedReducer = persistReducer(authPersistConfig, AuthSlice)
+
+const shopsPersistedReducer = persistReducer(shopsPersistConfig, ShopsSlice)
 
 const rootReducer = combineReducers({
     [ReduxService.reducerPath]: ReduxService.reducer,
     AuthSlice: persistedReducer,
-    ShopsSlice
+    ShopsSlice: shopsPersistedReducer
 })
 
 export const setupStore = () => {

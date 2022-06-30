@@ -27,6 +27,10 @@ const CartForm = () => {
     }
 
     const handleSubmit = () => {
+        Object.values(form).map(el => {
+            if(el === '') return
+        });
+        if(cart.cart.length === 0) return
         const request = {...form,cart}
         makeOrder(request)
         dispatch(onChangeShop())

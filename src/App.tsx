@@ -5,6 +5,7 @@ import {useAppSelector} from "./store/hooks/redux";
 import Header from "./components/Header";
 import ShopPage from "./pages/ShopPage";
 import ShoppingPage from "./pages/ShoppingPage";
+import HistoryPage from "./pages/HistoryPage";
 
 const App: React.FC = () => {
     const { token } = useAppSelector(state => state.AuthSlice);
@@ -20,6 +21,10 @@ const App: React.FC = () => {
                   <Route
                     path="/cart"
                     element={ <ShoppingPage /> }
+                  />
+                  <Route
+                    path="/history"
+                    element={ <HistoryPage /> }
                   />
               </Routes>
           </>

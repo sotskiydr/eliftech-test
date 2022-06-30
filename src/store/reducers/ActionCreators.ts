@@ -16,8 +16,8 @@ export const addProductToCart = (value: IProducts) => (dispatch: AppDispatch) =>
     dispatch(shopsSlice.actions.addProductToCart(value))
 }
 
-export const changeCartAmount = ({amount, action, product}: ICartChange) => (dispatch: AppDispatch) => {
-    dispatch(shopsSlice.actions.changeCartAmount({amount, action, product}))
+export const changeCartAmount = ({num, currentAmount, action, product}: ICartChange) => (dispatch: AppDispatch) => {
+    dispatch(shopsSlice.actions.changeCartAmount({num ,currentAmount, action, product}))
 }
 
 export const deleteFromCart = ({id, name, image, price}: IProducts) => (dispatch: AppDispatch) => {

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IMakeCartOrder, ISignIn, ISignUp, ISignUpRes} from "../store/models/Interfaces";
+import {IGetCartOrder, IMakeCartOrder, ISignIn, ISignUp, ISignUpRes} from "../store/models/Interfaces";
 import {RootState} from "../store/store";
 
 
@@ -62,6 +62,12 @@ export const ReduxService = createApi({
             }),
             invalidatesTags: ['PostApp']
         }),
+        getOrders: build.query<IGetCartOrder[], string>({
+            query: () => ({
+                url: `/api/products/get-orders`
+            }),
+            providesTags: result => ['PostApp']
+        }),
     })
 })
 
@@ -71,5 +77,6 @@ export const {
     useLogoutMutation,
     useGetCurrentUserQuery,
     useGetShopsQuery,
-    useMakeOrderMutation
+    useMakeOrderMutation,
+    useGetOrdersQuery
 } = ReduxService
