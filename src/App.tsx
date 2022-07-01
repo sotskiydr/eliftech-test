@@ -34,6 +34,7 @@ const App: React.FC = () => {
           </>
           :
             <Routes>
+                {/*<Route path="/" element={<Navigate to="/login"/>}/>*/}
                 <Route path="*" element={<Navigate to="/login"/>}/>
                 <Route
                     path="/login"

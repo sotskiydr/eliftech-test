@@ -14,6 +14,7 @@ import authBackground from '../../images/1150365296-huge.jpg';
 import { validate } from '../../helpers/FormValidation';
 import {useAppSelector} from "../../store/hooks/redux";
 import CircularIndeterminate from "../../components/Loader";
+import {NavLink} from "react-router-dom";
 
 function Copyright(props: any) {
     return (
@@ -130,9 +131,18 @@ export default function SignInSide() {
                                   </Link>
                               </Grid>
                               <Grid item>
-                                  <Link href="/register" variant="body2">
-                                      {"Don't have an account? Sign Up"}
-                                  </Link>
+                                  <Typography
+                                    variant="h6"
+                                    component="h4"
+                                    sx={{color: "#1976d2",
+                                        fontSize: "16px",
+                                        '&:hover': {textDecoration: "underline"}
+                                  }}
+                                  >
+                                      <NavLink to="/register">
+                                          Don't have an account? Sign Up
+                                      </NavLink>
+                                  </Typography>
                               </Grid>
                           </Grid>
                           <Copyright sx={{ mt: 5 }} />
