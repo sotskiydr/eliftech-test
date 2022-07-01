@@ -22,9 +22,9 @@ export default function MenuAppBar() {
 
     const handleClick = async () => {
         dispatch(changeStateCurrentUser(false))
+        dispatch(onChangeShop())
         setAnchorEl(null);
         await logout('')
-        dispatch(onChangeShop())
     }
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
