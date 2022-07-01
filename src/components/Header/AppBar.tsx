@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
 import { useLogoutMutation } from "../../services/ReduxService";
-import {changeStateCurrentUser} from "../../store/reducers/ActionCreators";
+import {changeStateCurrentUser, onChangeShop} from "../../store/reducers/ActionCreators";
 import CurrentUser from './CurrentUser/CurrentUser'
 import {NavLink} from "react-router-dom";
 
@@ -24,6 +24,7 @@ export default function MenuAppBar() {
         dispatch(changeStateCurrentUser(false))
         setAnchorEl(null);
         await logout('')
+        dispatch(onChangeShop())
     }
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {

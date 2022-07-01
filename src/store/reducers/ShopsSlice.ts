@@ -84,17 +84,6 @@ export const shopsSlice = createSlice({
             (state, { payload }) => {
                 state.shops = payload
             })
-          // .addMatcher(
-          //   ReduxService.endpoints.loginUser.matchFulfilled,
-          //   (state, { payload }) => {
-          //       state.token = payload.token
-          //       state.isCurrentUser = true
-          //   })
-          // .addMatcher(
-          //   ReduxService.endpoints.logout.matchRejected,
-          //   (state, { payload }) => {
-          //       state.token = ''
-          //   })
     },
 })
 

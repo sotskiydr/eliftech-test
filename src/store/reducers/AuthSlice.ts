@@ -62,6 +62,7 @@ export const authSlice = createSlice({
           .addMatcher(
            ReduxService.endpoints.logout.matchRejected,
            (state, { payload }) => {
+
                state.token = ''
                state.isLoading = false
            })
