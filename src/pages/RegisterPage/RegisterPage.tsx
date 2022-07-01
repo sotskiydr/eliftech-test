@@ -12,6 +12,8 @@ import {useCreateUserMutation} from "../../services/ReduxService";
 import {useState} from "react";
 import authBackground from '../../images/1150365296-huge.jpg';
 import { validate } from '../../helpers/FormValidation';
+import CircularIndeterminate from "../../components/Loader";
+import {useAppSelector} from "../../store/hooks/redux";
 
 function Copyright(props: any) {
     return (
@@ -23,6 +25,8 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignInSide() {
+    const {isLoading} = useAppSelector(state => state.AuthSlice)
+    
     const [createUser, {}] = useCreateUserMutation()
     const [formState, setFormState] = useState({
         name: '',
@@ -104,14 +108,26 @@ export default function SignInSide() {
                             onChange={handleChange}
                             helperText={errors.password}
                           />
-                          <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                          {isLoading ? <Button
+                              disabled
+                              type="submit"
+                              fullWidth
+                              variant="contained"
+                              sx={{ mt: 3, mb: 2 }}
                           >
                               Sign Up
                           </Button>
+                            :
+                            <Button
+                              type="submit"
+                              fullWidth
+                              variant="contained"
+                              sx={{ mt: 3, mb: 2 }}
+                            >
+                                Sign Up
+                            </Button>
+                          }
+                          {isLoading && <CircularIndeterminate />}
                           <Grid container>
                               <Grid item xs>
                                   <Link

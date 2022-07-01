@@ -15,6 +15,10 @@ const App: React.FC = () => {
               <Routes>
                   <Route path="*" element={<Navigate to="/shop"/>}/>
                   <Route
+                    path="/"
+                    element={<Navigate to="/shop"/>}
+                  />
+                  <Route
                     path="/shop"
                     element={ <ShopPage /> }
                   />

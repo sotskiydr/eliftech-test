@@ -5,6 +5,7 @@ import {useGetShopsQuery} from "../../services/ReduxService";
 import {IShops} from '../../store/models/Interfaces'
 import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
 import {onChangeShop} from '../../store/reducers/ActionCreators'
+import CircularIndeterminate from "../Loader";
 
 const Shops: React.FC = () => {
     const dispatch = useAppDispatch()
@@ -35,6 +36,7 @@ const Shops: React.FC = () => {
                   </button>
               </li>
           </ul>
+          {isLoading && <CircularIndeterminate />}
       </div>
     );
 };
