@@ -10,19 +10,24 @@ const CartItem = ({id, name, image, price, amount}: IProducts) => {
     const [currentAmount, setAmount] = useState(Number(amount));
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value as unknown as number;
-        if (value < 0) return
-        setAmount(Number(value))
-        const num = value * price;
-        if(Number(value) > currentAmount){
-            dispatch(changeCartAmount(
-              {currentAmount, num, action: 'add',product: {id, name, image, price}})
-            )
-        }else{
-            dispatch(changeCartAmount(
-              {currentAmount, num, action: 'remove',product: {id, name, image, price}})
-            )
-        }
+        const value = Number(e.target.value) as unknown as number;
+        if (value < 1) return
+        setAmount(value)
+        dispatch(changeCartAmount(
+          {value, product: {id, name, image, price}})
+        )
+        // if (value < 0) return
+        // setAmount(Number(value))
+        // const num = value * price;
+        // if(Number(value) > currentAmount){
+        //     dispatch(changeCartAmount(
+        //       {currentAmount, num, action: 'add',product: {id, name, image, price}})
+        //     )
+        // }else{
+        //     dispatch(changeCartAmount(
+        //       {currentAmount, num, action: 'remove',product: {id, name, image, price}})
+        //     )
+        // }
     }
 
     const handleDelete = () => {
@@ -40,7 +45,7 @@ const CartItem = ({id, name, image, price, amount}: IProducts) => {
           <input
             className={style['cart-item_input']}
             onChange={handleChange}
-            value={amount}
+            value={currentAmount}
             type="number"
 
           />

@@ -34,9 +34,7 @@ export interface ICart {
 }
 
 export interface ICartChange {
-    num: number;
-    currentAmount: number;
-    action: string;
+    value: number;
     product: IProducts
 }
 

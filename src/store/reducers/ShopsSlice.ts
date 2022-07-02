@@ -33,7 +33,7 @@ export const shopsSlice = createSlice({
     reducers: {
         changeRenderProducts: (state, action: PayloadAction<number>) => {
             state.renderProducts = [];
-            state.shops.map((el: Interface) => {
+            state.shops.forEach((el: Interface) => {
                 if(el.id === action.payload) {
                     state.renderProducts = el.products
                     state.currentShop = el.name
@@ -45,21 +45,11 @@ export const shopsSlice = createSlice({
             state.cart.cart.push({...action.payload, amount: 1})
         },
         changeCartAmount: (state, action: PayloadAction<ICartChange>) => {
-            if(action.payload.action === 'add'){
-                state.cart.amount += action.payload.product.price
-            }
-            if(action.payload.action === 'remove'){
-                state.cart.amount -= action.payload.product.price
-            }
-            state.cart.cart.map((el, i) => {
+            state.cart.cart.forEach((el, i) => {
                 if(el.id === action.payload.product.id){
                     state.cart.cart[i] = {
                         ...action.payload.product,
-                        amount:
-                          action.payload.action === 'add' ?
-                            Number(action.payload.currentAmount) + 1
-                            :
-                            Number(action.payload.currentAmount) - 1
+                        amount: Number(action.payload.value)
                     }
                 }
             })
@@ -75,6 +65,15 @@ export const shopsSlice = createSlice({
             }
             state.currentShop = ''
             state.renderProducts = []
+        },
+        onCalcAmount: (state, action: PayloadAction) => {
+            let amount = 0;
+            state.cart.cart.forEach(el => {
+                if(el.amount) {
+                    amount += el.amount * el.price
+                }
+            })
+            state.cart.amount = amount;
         },
     },
     extraReducers: (builder) => {
